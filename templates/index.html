@@ -1,307 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Health Analysis</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(135deg, rgb(230, 240, 255), rgb(210, 220, 245));
-            /* Subtle blue gradient */
-            padding: 20px;
-            font-family: 'Arial', sans-serif;
-            color: rgb(50, 50, 50);
-            /* Dark gray for text */
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            color: rgb(50, 50, 80);
-            /* Deep purple-gray for headings */
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, rgb(128, 0, 255), rgb(0, 102, 204));
-            /* Purple to blue gradient */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            /* Gradient text effect */
-        }
-
-        form {
-            background: linear-gradient(145deg, rgb(240, 245, 255), rgb(220, 230, 255));
-            /* Light purple-blue gradient */
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            /* Subtle shadow */
-        }
-
-        label {
-            font-weight: bold;
-            color: rgb(80, 80, 120);
-            /* Muted purple-gray for labels */
-        }
-
-        .form-control {
-            border-radius: 6px;
-            border: 1px solid rgb(200, 200, 230);
-            /* Light gray-blue for borders */
-            background-color: rgb(183, 203, 244);
-            /* Subtle light purple for input fields */
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-
-        .form-control:hover {
-            background: linear-gradient(135deg, rgb(225, 235, 255), rgb(210, 220, 245));
-            /* Blue gradient on hover */
-            border-color: rgb(128, 0, 255);
-            /* Purple border on hover */
-        }
-
-        button {
-            background: linear-gradient(90deg, rgb(128, 0, 255), rgb(0, 102, 204));
-            /* Purple to blue gradient */
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            padding: 10px 15px;
-            border: none;
-            transition: background 0.3s ease;
-        }
-
-        button:hover {
-            background: linear-gradient(90deg, rgb(102, 0, 204), rgb(0, 76, 153));
-            /* Darker purple-blue gradient on hover */
-        }
-
-        #results {
-            margin-top: 20px;
-        }
-
-        .metrics,
-        .analysis {
-            padding: 15px;
-            margin-bottom: 20px;
-            background: linear-gradient(145deg, rgb(245, 250, 255), rgb(230, 240, 255));
-            /* Light gradient for sections */
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .metrics {
-            border-left: 4px solid rgb(0, 102, 204);
-            /* Blue for metrics */
-        }
-
-        .analysis {
-            border-left: 4px solid rgb(128, 0, 255);
-            /* Purple for analysis */
-        }
-
-        .card {
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            background: linear-gradient(145deg, rgb(107, 138, 215));
-            /* Light purple-blue gradient for cards */
-        }
-
-        .card-header {
-            background: linear-gradient(90deg, rgb(128, 0, 255), rgb(0, 102, 204));
-            /* Purple to blue gradient for card headers */
-            color: #ffffff;
-            font-weight: bold;
-            padding: 10px;
-            border-radius: 8px 8px 0 0;
-        }
-
-        .card-body {
-            background: linear-gradient(145deg, rgb(245, 250, 255), rgb(230, 240, 255));
-            /* Subtle gray gradient for card body */
-            padding: 15px;
-            border-radius: 0 0 8px 8px;
-        }
-
-        #errorAlert {
-            visibility: hidden;
-            margin-top: 20px;
-            padding: 15px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 8px;
-            background: linear-gradient(90deg, rgb(204, 0, 102), rgb(153, 0, 76));
-            /* Red-purple gradient for errors */
-            color: #ffffff;
-            /* White text for error alert */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .metric-item {
-            margin-bottom: 10px;
-            font-size: 14px;
-            line-height: 1.5;
-            color: rgb(50, 50, 80);
-            /* Dark gray for metric text */
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 24px;
-            }
-
-            button {
-                font-size: 14px;
-            }
-
-            .form-control {
-                font-size: 14px;
-            }
-        }
-    </style>
-
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Query System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { 
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+      }
+      50% { 
+        box-shadow: 0 0 20px 10px rgba(99, 102, 241, 0.2);
+      }
+    }
+    @keyframes slide-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    .animate-pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    .animate-slide-up {
+      animation: slide-up 0.5s ease-out forwards;
+    }
+    .typing-effect {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid;
+      width: 0;
+      animation: 
+        typing 2s steps(40, end) forwards,
+        blink 1s step-end infinite;
+    }
+    .loading-dots::after {
+      content: '...';
+      animation: dots 1.5s steps(4, end) infinite;
+    }
+    @keyframes dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60% { content: '...'; }
+      80%, 100% { content: ''; }
+    }
+  </style>
 </head>
-
-<body>
-    <div class="container">
-        <h1 class="text-center mb-4">Real-Time Health Analysis</h1>
-
-        <form id="healthForm" class="p-4 bg-white rounded shadow">
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Age</label>
-                    <input type="number" id="age" class="form-control" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Gender</label>
-                    <select id="gender" class="form-control" required>
-                        <option value="">Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Weight (kg)</label>
-                    <input type="number" id="weight" class="form-control" step="0.1" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Height (cm)</label>
-                    <input type="number" id="height" class="form-control" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Lifestyle</label>
-                    <select id="lifestyle" class="form-control" required>
-                        <option value="">Select Lifestyle</option>
-                        <option value="sedentary">Sedentary</option>
-                        <option value="moderate">Moderate</option>
-                        <option value="active">Active</option>
-                    </select>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Submit</button>
-        </form>
-
-        <div id="results" style="display:none">
-            <div class="metrics" id="metricsDisplay"></div>
-            <div class="analysis" id="analysisDisplay"></div>
+<body class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+  <!-- Header Navigation -->
+  <header class="bg-white shadow-md">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex">
+          <div class="flex-shrink-0 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+            <span class="ml-2 text-xl font-bold text-gray-900">FinQuery</span>
+          </div>
+          <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+            <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              Home
+            </a>
+            <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              Services
+            </a>
+            <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              Products
+            </a>
+            <a href="#about" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              About Us
+            </a>
+          </div>
         </div>
-
-        <div id="analysisResults" style="display:none;">
-            <div class="card mb-3">
-                <div class="card-header">Real-Time Health Metrics</div>
-                <div class="card-body" id="metricsDisplay"></div>
-            </div>
-
-            <div class="card mb-3">
-                <div class="card-header">Key Insights</div>
-                <div class="card-body" id="insightsDisplay"></div>
-            </div>
-
-            <div class="card mb-3">
-                <div class="card-header">Recommendations</div>
-                <div class="card-body" id="recommendationsDisplay"></div>
-            </div>
-
-            <div class="card mb-3">
-                <div class="card-header">Analysis Sources</div>
-                <div class="card-body" id="sourcesDisplay"></div>
-            </div>
+        <div class="hidden sm:ml-6 sm:flex sm:items-center">
+          <button class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Get Started
+          </button>
         </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="text-center mb-12 animate-float">
+      <h1 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 mb-4">
+        Financial Information Query System
+      </h1>
+      <p class="text-gray-600 max-w-2xl mx-auto typing-effect">
+        Get instant answers to your insurance and banking queries using our advanced AI-powered system
+      </p>
     </div>
 
-    <!-- Add error display -->
-    <div id="errorAlert" class="alert alert-danger" style="display:none;"></div>
+    <div class="bg-white rounded-2xl shadow-xl p-6 mb-8 animate-slide-up" style="opacity: 0; animation-delay: 0.2s;">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Example queries with hover animations -->
+        <div class="group transform transition-all duration-300 hover:scale-105">
+          <div class="flex items-start space-x-3 p-4 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-all cursor-pointer">
+            <div class="flex-shrink-0 p-2 bg-white rounded-lg shadow-sm group-hover:animate-pulse-glow">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <p class="text-sm text-gray-700">Compare health insurance policies between HealthGuard and SecureCare</p>
+          </div>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.getElementById('healthForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = {
-                age: parseInt(document.getElementById('age').value),
-                gender: document.getElementById('gender').value,
-                weight: parseFloat(document.getElementById('weight').value),
-                height: parseFloat(document.getElementById('height').value),
-                lifestyle: document.getElementById('lifestyle').value
-            };
+        <div class="group transform transition-all duration-300 hover:scale-105">
+          <div class="flex items-start space-x-3 p-4 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-all cursor-pointer">
+            <div class="flex-shrink-0 p-2 bg-white rounded-lg shadow-sm group-hover:animate-pulse-glow">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3c.53 0 1.039.211 1.414.586l7 7c.775.775.775 2.053 0 2.828l-7 7c-.775.775-2.053.775-2.828 0l-7-7c-.775-.775-.775-2.053 0-2.828l7-7c.375-.375.884-.586 1.414-.586z"/>
+              </svg>
+            </div>
+            <p class="text-sm text-gray-700">What are the life insurance options available?</p>
+          </div>
+        </div>
 
-            try {
-                const response = await fetch('/analyze_health', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
+        <div class="group transform transition-all duration-300 hover:scale-105">
+          <div class="flex items-start space-x-3 p-4 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-all cursor-pointer">
+            <div class="flex-shrink-0 p-2 bg-white rounded-lg shadow-sm group-hover:animate-pulse-glow">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <p class="text-sm text-gray-700">Tell me about disability insurance waiting periods</p>
+          </div>
+        </div>
 
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
+        <div class="group transform transition-all duration-300 hover:scale-105">
+          <div class="flex items-start space-x-3 p-4 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-all cursor-pointer">
+            <div class="flex-shrink-0 p-2 bg-white rounded-lg shadow-sm group-hover:animate-pulse-glow">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"/>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <p class="text-sm text-gray-700">Which policy has the highest coverage limit?</p>
+          </div>
+        </div>
+      </div>
 
-                const data = await response.json();
-                displayResults(data);
-            } catch (error) {
-                document.getElementById('errorAlert').style.display = 'block';
-                document.getElementById('errorAlert').textContent =
-                    `Error: ${error.message || 'Failed to process request'}`;
-            }
+      <form id="queryForm" class="space-y-4">
+        <div class="relative transform transition-all duration-300 hover:scale-[1.02]">
+          <textarea
+            id="queryInput"
+            class="w-full h-32 px-4 py-3 text-gray-700 bg-gray-50 rounded-xl border border-gray-200 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 transition-all"
+            placeholder="Enter your insurance or banking query here..."
+          ></textarea>
+          <div class="absolute inset-0 bg-gradient-to-r from-indigo-600/5 to-purple-600/5 rounded-xl pointer-events-none"></div>
+        </div>
+
+        <button
+          type="submit"
+          class="group w-full md:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+          <span>Submit Query</span>
+        </button>
+      </form>
+    </div>
+
+    <div id="responseContainer" class="hidden">
+      <div class="bg-white rounded-2xl shadow-xl p-6 animate-slide-up">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 p-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-lg animate-pulse-glow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3c.53 0 1.039.211 1.414.586l7 7c.775.775.775 2.053 0 2.828l-7 7c-.775.775-2.053.775-2.828 0l-7-7c-.775-.775-.775-2.053 0-2.828l7-7c.375-.375.884-.586 1.414-.586z"/>
+            </svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="font-semibold text-gray-900 mb-2">Response</h3>
+            <div id="responseText" class="text-gray-700"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Us Section -->
+  <section id="about" class="bg-white py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Meet Our Team</h2>
+        <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+          Powered by innovation and driven by excellence
+        </p>
+      </div>
+
+      <div class="mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-6 lg:gap-x-8">
+        <!-- Deep Das - AI ML Lead -->
+        <div class="group relative">
+          <div class="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100">
+            <img src="../images/deep_photo.jpg">
+          </div>
+          <div class="mt-6">
+            <h3 class="text-lg font-medium text-gray-900">
+              Deep Das
+              <span class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                AI ML Lead
+              </span>
+            </h3>
+            <p class="mt-2 text-sm text-gray-500">
+              Leading our AI initiatives and machine learning implementations to deliver cutting-edge financial solutions.
+            </p>
+            <div class="mt-4 flex space-x-2">
+              <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">LinkedIn</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">GitHub</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Swapna K - Frontend Lead -->
+        <div class="group relative">
+          <div class="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100">
+            <img src="../images/swapna.jpg" alt="Swapna K" class="object-cover object-center group-hover:opacity-75 transition-opacity duration-300">
+          </div>
+          <div class="mt-6">
+            <h3 class="text-lg font-medium text-gray-900">
+              Swapna K
+              <span class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                Frontend Lead
+              </span>
+            </h3>
+            <p class="mt-2 text-sm text-gray-500">
+              Crafting beautiful and intuitive user interfaces to enhance the financial query experience.
+            </p>
+            <div class="mt-4 flex space-x-2">
+              <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">LinkedIn</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">GitHub</span>
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Add click handlers to example queries
+    document.querySelectorAll('.group').forEach(query => {
+      query.addEventListener('click', function() {
+        const queryText = this.querySelector('p').textContent;
+        document.getElementById('queryInput').value = queryText;
+      });
+    });
+
+    // Animate elements on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const elements = document.querySelectorAll('.animate-slide-up');
+      elements.forEach((el, index) => {
+        el.style.animationDelay = `${index * 0.1}s`;
+      });
+    });
+
+    // Handle form submission
+    document.getElementById('queryForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const query = document.getElementById('queryInput').value;
+      const responseContainer = document.getElementById('responseContainer');
+      const responseText = document.getElementById('responseText');
+      
+      // Show response container with loading state
+      responseContainer.classList.remove('hidden');
+      responseText.innerHTML = '<div class="loading-dots">Processing query</div>';
+      
+      try {
+        const response = await fetch('/query', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ query: query })
         });
-
-        function displayResults(data) {
-            document.getElementById('results').style.display = 'block';
-            document.getElementById('metricsDisplay').innerHTML = formatMetrics(data.metrics);
-            document.getElementById('analysisDisplay').innerHTML = data.analysis;
-
-            // Display metrics
-            document.getElementById('metricsDisplay').innerHTML = formatMetrics(data.metrics);
-
-            // Display insights
-            document.getElementById('insightsDisplay').innerHTML =
-                `<ul>${data.threshold_violations.map(insight => `<li>${insight}</li>`).join('')}</ul>`;
-
-            // Display recommendations
-            document.getElementById('recommendationsDisplay').innerHTML =
-                `<ul>${data.recommendations.map(rec => `<li>${rec}</li>`).join('')}</ul>`;
-
-            // Display sources
-            document.getElementById('sourcesDisplay').innerHTML =
-                `<ul>${data.data_sources ? data.data_sources.map(source => `<li>${source}</li>`).join('') : 'No sources available'}</ul>`;
-        }
-
-        function formatMetrics(metrics) {
-            return Object.entries(metrics)
-                .map(([key, value]) => `
-                    <div class="metric-item">
-                        <strong>${key.replace('_', ' ').toUpperCase()}:</strong> ${value}
-                    </div>
-                `).join('');
-        }
-    </script>
+        const data = await response.json();
+        
+        // Animate the response text
+        responseText.style.opacity = '0';
+        setTimeout(() => {
+          responseText.innerHTML = data.response;
+          responseText.style.opacity = '1';
+          responseText.classList.add('animate-slide-up');
+        }, 300);
+      } catch (error) {
+        responseText.innerHTML = `<div class="text-red-500">Error: ${error.message}</div>`;
+      }
+    });
+  </script>
 </body>
-
 </html>

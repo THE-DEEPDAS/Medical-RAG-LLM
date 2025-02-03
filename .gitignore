@@ -6,6 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
+medrag_env
+
 # Distribution / packaging
 .Python
 build/
@@ -151,6 +153,8 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+f:\Wearables\Medical-RAG-LLM\medrag_env
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
