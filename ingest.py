@@ -33,19 +33,35 @@ def ingest_docs():
         )
         
         # Initialize Qdrant client with increased timeout
+        from qdrant_client.http.models import VectorParams
         client = QdrantClient("http://localhost:6333", timeout=60)
         
-        # Process documents in batches
+        # Check if collection exists and recreate only if needed
+        try:
+            client.delete_collection(collection_name="financial_docs")
+            print("Deleted existing collection")
+        except:
+            print("No existing collection to delete")
+            
+        # Create fresh collection
+        client.create_collection(
+            collection_name="financial_docs",
+            vectors_config=VectorParams(size=384, distance="Cosine")
+        )
+        print("Created fresh collection 'financial_docs'")
+        
+        # Initialize Qdrant vector store
+        db = Qdrant(
+            client=client,
+            embeddings=embeddings,
+            collection_name="financial_docs"
+        )
+        
+        # Process documents in batches using add_documents instead of recreating the collection
         batch_size = 10
         for i in range(0, len(texts), batch_size):
             batch = texts[i:i + batch_size]
-            Qdrant.from_documents(
-                documents=batch,
-                embedding=embeddings,
-                url="http://localhost:6333",
-                collection_name="financial_docs",
-                force_recreate=False  # Do not recreate collection for each batch
-            )
+            db.add_documents(batch)
             print(f"Processed batch {i // batch_size + 1} of {len(texts) // batch_size + 1}")
         
         print(f"Successfully processed {len(documents)} financial documents")

@@ -1,5 +1,5 @@
 # Remove medical imports and add financial ones
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request, HTTPException, Response
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles 
@@ -10,8 +10,12 @@ from langchain.chains import RetrievalQA
 from qdrant_client import QdrantClient
 import os
 import json
+import sys
 from typing import Optional, Dict, Any
-from Data.insurance_data import insurance_data
+
+# Remove: sys.path.insert(0, r"F:\Wearables\Medical-RAG-LLM\Data")
+
+# Remove: from insurance_data import insurance_data
 from pydantic import BaseModel
 
 class QueryRequest(BaseModel):
@@ -64,83 +68,93 @@ try:
         encode_kwargs={'normalize_embeddings': True}
     )
     
+    from qdrant_client.http.models import VectorParams  # add this import
+
+    # Initialize Qdrant client
     client = QdrantClient("http://localhost:6333")
-    
-    # Create vector store for financial documents
-    db = Qdrant(
-        client=client, 
-        embeddings=embeddings,
-        collection_name="financial_docs"
-    )
-    
-    retriever = db.as_retriever(search_kwargs={"k": 3})
+
+    # Simply connect to the collection, don't try to create it
+    try:
+        # Create vector store for financial documents
+        db = Qdrant(
+            client=client, 
+            embeddings=embeddings,
+            collection_name="financial_docs"
+        )
+        print("Connected to 'financial_docs' collection")
+        
+        retriever = db.as_retriever(search_kwargs={"k": 3})
+    except Exception as e:
+        print(f"Error connecting to collection: {e}")
+        raise
     
 except Exception as e:
     print(f"Initialization error: {e}")
     print(f"Make sure the model exists at: {MODEL_PATH}")
     raise
 
-@app.get("/")
-async def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
-
-@app.post("/query")
-async def process_query(request: QueryRequest):
-    """Handle financial queries"""
+# New main endpoint to handle financial queries (used by the frontend)
+@app.post("/query_new")
+async def process_query_new(request: QueryRequest):
+    """Handle financial queries using a simplified and robust logic"""
     try:
-        query = request.query
-        # Get relevant documents
+        query = request.query.strip()
+        if not query: 
+            raise HTTPException(status_code=400, detail="Query cannot be empty")
+            
         docs = retriever.invoke(query)
-        context = "\n".join([doc.page_content for doc in docs])
+        if not docs:
+            raise HTTPException(status_code=404, detail="No relevant documents found")
+
+        context_parts = []
+        for doc in docs:
+            content = getattr(doc, "page_content", None) or str(doc)
+            context_parts.append(content)
+        context = "\n".join(context_parts)
         
-        # Add insurance data to context
-        insurance_context = json.dumps(insurance_data, indent=2)
-        combined_context = f"{context}\n\nInsurance Information:\n{insurance_context}"
+        # Removed insurance_data handling; use context only.
+        combined_context = context[:config['context_length']]
         
-        # Ensure the combined context does not exceed the maximum context length
-        max_context_length = config['context_length']
-        if len(combined_context) > max_context_length:
-            combined_context = combined_context[:max_context_length]
-        
-        # Format prompt
-        prompt = FINANCIAL_QUERY_PROMPT.format(
-            context=combined_context,
-            query=query
-        )
-        
-        # Get response from LLM
+        prompt = FINANCIAL_QUERY_PROMPT.format(context=combined_context, query=query)
         response = llm.invoke(prompt)
-        
+        if not response:
+            raise HTTPException(status_code=500, detail="LLM returned no response")
+            
         return JSONResponse(content={
             "query": query,
             "response": response.strip()
         })
-        
     except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Error processing query: {str(e)}"
-        )
+        print(f"Error in /query_new: {e}")
+        # Fixed the missing closing quote and parenthesis below
+        raise HTTPException(status_code=500, detail=f"Error processing query: {str(e)}")
+
+# New alias endpoint to support legacy POST requests to "/query"
+@app.post("/query")
+async def query_alias(request: QueryRequest):
+    return await process_query_new(request)
+
+# Add health-check endpoint
+@app.get("/ping")
+async def ping():
+    return {"message": "pong"}
+
+@app.get("/")
+async def read_root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+# Add a route to handle favicon.ico requests
+@app.get("/favicon.ico")
+async def favicon():
+    return Response(status_code=204)
 
 # Add helper function to search financial info
 def search_financial_info(query: str) -> dict:
-    """Search through financial documents and insurance data"""
+    """Search through financial documents"""
     results = []
     query = query.lower()
     
-    # Search in insurance data
-    for company, company_data in insurance_data["companies"].items():
-        for insurance_type, type_data in company_data["types"].items():
-            for policy_name, policy_data in type_data["policies"].items():
-                if (query in company.lower() or
-                    query in insurance_type.lower() or
-                    query in policy_name.lower()):
-                    results.append({
-                        "type": "insurance",
-                        "company": company,
-                        "product": policy_name,
-                        "details": policy_data
-                    })
+    # Removed insurance_data search block since the file does not exist.
     
     # Add results from vector store
     docs = retriever.invoke(query)

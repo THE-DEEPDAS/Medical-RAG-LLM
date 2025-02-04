@@ -1,3 +1,6 @@
+# The following versions are strictly used in this project.
+# If you experience dependency conflicts (e.g. with conda-repo-cli, langchain-ollama, ollama, etc.),
+# please use a dedicated virtual environment and uninstall the conflicting packages.
 torch>=2.0.0
 huggingface-hub>=0.19.4
 transformers>=4.30.0
@@ -13,7 +16,7 @@ python-multipart>=0.0.5
 aiofiles==23.2.1
 urllib3==1.26.18
 protobuf==4.25.3
-pydantic>=2.0.0
+pydantic==1.10.9
 tqdm==4.66.1
 requests==2.31.0
 numpy

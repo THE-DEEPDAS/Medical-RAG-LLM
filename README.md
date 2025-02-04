@@ -53,6 +53,24 @@ graph TD
 - Python 3.8 or higher
 - pip (Python package installer)
 
+### Virtual Environment Setup
+
+To avoid dependency conflicts without altering your dependencies, we recommend running the project in an isolated virtual environment.
+
+#### Using venv
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+#### Using Conda
+```bash
+conda create --name finquery python=3.8
+conda activate finquery
+pip install -r requirements.txt
+```
+
 ### Steps
 
 1. **Clone the repository**:
@@ -100,9 +118,9 @@ graph TD
 
 ### Website Overview
 
-![1](images/image.png)
 ![2](<images/image%20(1).png>)
 ![3](<images/image%20(2).png>)
+![1](images/image.png)
 
 ## Contact
 
