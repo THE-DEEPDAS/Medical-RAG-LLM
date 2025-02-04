@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,64 +8,107 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
     }
+
     @keyframes pulse-glow {
-      0%, 100% { 
+
+      0%,
+      100% {
         box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
       }
-      50% { 
+
+      50% {
         box-shadow: 0 0 20px 10px rgba(99, 102, 241, 0.2);
       }
     }
+
     @keyframes slide-up {
       from {
         opacity: 0;
         transform: translateY(20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
+
     @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
+      from {
+        width: 0
+      }
+
+      to {
+        width: 100%
+      }
     }
+
     @keyframes blink {
-      50% { border-color: transparent }
+      50% {
+        border-color: transparent
+      }
     }
+
     .animate-float {
       animation: float 3s ease-in-out infinite;
     }
+
     .animate-pulse-glow {
       animation: pulse-glow 2s ease-in-out infinite;
     }
+
     .animate-slide-up {
       animation: slide-up 0.5s ease-out forwards;
     }
+
     .typing-effect {
       overflow: hidden;
       white-space: nowrap;
       border-right: 2px solid;
       width: 0;
-      animation: 
+      animation:
         typing 2s steps(40, end) forwards,
         blink 1s step-end infinite;
     }
+
     .loading-dots::after {
       content: '...';
       animation: dots 1.5s steps(4, end) infinite;
     }
+
     @keyframes dots {
-      0%, 20% { content: '.'; }
-      40% { content: '..'; }
-      60% { content: '...'; }
-      80%, 100% { content: ''; }
+
+      0%,
+      20% {
+        content: '.';
+      }
+
+      40% {
+        content: '..';
+      }
+
+      60% {
+        content: '...';
+      }
+
+      80%,
+      100% {
+        content: '';
+      }
     }
   </style>
 </head>
+
 <body class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
   <!-- Header Navigation -->
   <header class="bg-white shadow-md">
@@ -72,28 +116,34 @@
       <div class="flex justify-between h-16">
         <div class="flex">
           <div class="flex-shrink-0 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+              <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
             </svg>
             <span class="ml-2 text-xl font-bold text-gray-900">FinQuery</span>
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-            <a href="#" class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+            <a href="#"
+              class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
               Home
             </a>
-            <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+            <a href="#"
+              class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
               Services
             </a>
-            <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+            <a href="#"
+              class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
               Products
             </a>
-            <a href="#about" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+            <a href="#about"
+              class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
               About Us
             </a>
           </div>
         </div>
         <div class="hidden sm:ml-6 sm:flex sm:items-center">
-          <button class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button
+            class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Get Started
           </button>
         </div>
@@ -107,7 +157,7 @@
         Financial Information Query System
       </h1>
       <p class="text-gray-600 max-w-2xl mx-auto typing-effect">
-        Get instant answers to your insurance and banking queries using our advanced AI-powered system
+        Get answers to your insurance and banking queries using our advanced AI-powered system!!
       </p>
     </div>
 
@@ -115,10 +165,13 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <!-- Example queries with hover animations -->
         <div class="group transform transition-all duration-300 hover:scale-105">
-          <div class="flex items-start space-x-3 p-4 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-all cursor-pointer">
+          <div
+            class="flex items-start space-x-3 p-4 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-all cursor-pointer">
             <div class="flex-shrink-0 p-2 bg-white rounded-lg shadow-sm group-hover:animate-pulse-glow">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
             </div>
             <p class="text-sm text-gray-700">Compare health insurance policies between HealthGuard and SecureCare</p>
@@ -126,10 +179,14 @@
         </div>
 
         <div class="group transform transition-all duration-300 hover:scale-105">
-          <div class="flex items-start space-x-3 p-4 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-all cursor-pointer">
+          <div
+            class="flex items-start space-x-3 p-4 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-all cursor-pointer">
             <div class="flex-shrink-0 p-2 bg-white rounded-lg shadow-sm group-hover:animate-pulse-glow">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3c.53 0 1.039.211 1.414.586l7 7c.775.775.775 2.053 0 2.828l-7 7c-.775.775-2.053.775-2.828 0l-7-7c-.775-.775-.775-2.053 0-2.828l7-7c.375-.375.884-.586 1.414-.586z"/>
+              <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M12 3c.53 0 1.039.211 1.414.586l7 7c.775.775.775 2.053 0 2.828l-7 7c-.775.775-2.053.775-2.828 0l-7-7c-.775-.775-.775-2.053 0-2.828l7-7c.375-.375.884-.586 1.414-.586z" />
               </svg>
             </div>
             <p class="text-sm text-gray-700">What are the life insurance options available?</p>
@@ -137,11 +194,14 @@
         </div>
 
         <div class="group transform transition-all duration-300 hover:scale-105">
-          <div class="flex items-start space-x-3 p-4 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-all cursor-pointer">
+          <div
+            class="flex items-start space-x-3 p-4 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-all cursor-pointer">
             <div class="flex-shrink-0 p-2 bg-white rounded-lg shadow-sm group-hover:animate-pulse-glow">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
+              <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
               </svg>
             </div>
             <p class="text-sm text-gray-700">Tell me about disability insurance waiting periods</p>
@@ -149,11 +209,14 @@
         </div>
 
         <div class="group transform transition-all duration-300 hover:scale-105">
-          <div class="flex items-start space-x-3 p-4 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-all cursor-pointer">
+          <div
+            class="flex items-start space-x-3 p-4 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-all cursor-pointer">
             <div class="flex-shrink-0 p-2 bg-white rounded-lg shadow-sm group-hover:animate-pulse-glow">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="1" x2="12" y2="23"/>
-                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
               </svg>
             </div>
             <p class="text-sm text-gray-700">Which policy has the highest coverage limit?</p>
@@ -163,21 +226,21 @@
 
       <form id="queryForm" class="space-y-4">
         <div class="relative transform transition-all duration-300 hover:scale-[1.02]">
-          <textarea
-            id="queryInput"
+          <textarea id="queryInput"
             class="w-full h-32 px-4 py-3 text-gray-700 bg-gray-50 rounded-xl border border-gray-200 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 transition-all"
-            placeholder="Enter your insurance or banking query here..."
-          ></textarea>
-          <div class="absolute inset-0 bg-gradient-to-r from-indigo-600/5 to-purple-600/5 rounded-xl pointer-events-none"></div>
+            placeholder="Enter your insurance or banking query here..."></textarea>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-indigo-600/5 to-purple-600/5 rounded-xl pointer-events-none">
+          </div>
         </div>
 
-        <button
-          type="submit"
-          class="group w-full md:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:rotate-12 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="22" y1="2" x2="11" y2="13"/>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        <button type="submit"
+          class="group w-full md:w-auto px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transform group-hover:rotate-12 transition-transform"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13" />
+            <polygon points="22 2 15 22 11 13 2 9 22 2" />
           </svg>
           <span>Submit Query</span>
         </button>
@@ -188,8 +251,10 @@
       <div class="bg-white rounded-2xl shadow-xl p-6 animate-slide-up">
         <div class="flex items-start space-x-4">
           <div class="flex-shrink-0 p-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-lg animate-pulse-glow">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3c.53 0 1.039.211 1.414.586l7 7c.775.775.775 2.053 0 2.828l-7 7c-.775.775-2.053.775-2.828 0l-7-7c-.775-.775-.775-2.053 0-2.828l7-7c.375-.375.884-.586 1.414-.586z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-indigo-600" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M12 3c.53 0 1.039.211 1.414.586l7 7c.775.775.775 2.053 0 2.828l-7 7c-.775.775-2.053.775-2.828 0l-7-7c-.775-.775-.775-2.053 0-2.828l7-7c.375-.375.884-.586 1.414-.586z" />
             </svg>
           </div>
           <div class="flex-1">
@@ -215,29 +280,34 @@
         <!-- Deep Das - AI ML Lead -->
         <div class="group relative">
           <div class="overflow-hidden bg-gray-100 flex justify-center">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80" alt="Deep Das" class="w-48 h-48 object-cover rounded-full transition-opacity duration-300 group-hover:opacity-75">
+            <img src="deep_photo.jpg" alt="Deep Das"
+              class="w-48 h-48 object-cover rounded-full transition-opacity duration-300 group-hover:opacity-75">
           </div>
           <div class="mt-6">
             <h3 class="text-lg font-medium text-gray-900">
               Deep Das
-              <span class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+              <span
+                class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
                 AI ML Lead
               </span>
             </h3>
             <p class="mt-2 text-sm text-gray-500">
-              Leading our AI initiatives and machine learning implementations to deliver cutting-edge financial solutions.
+              Leading our AI initiatives and machine learning implementations to deliver cutting-edge financial
+              solutions.
             </p>
             <div class="mt-4 flex space-x-2">
               <a href="#" class="text-gray-400 hover:text-gray-500">
                 <span class="sr-only">LinkedIn</span>
                 <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
               </a>
               <a href="#" class="text-gray-400 hover:text-gray-500">
                 <span class="sr-only">GitHub</span>
                 <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                  <path fill-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                 </svg>
               </a>
             </div>
@@ -247,12 +317,14 @@
         <!-- Swapna K - Frontend Lead -->
         <div class="group relative">
           <div class="overflow-hidden bg-gray-100 flex justify-center">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80" alt="Swapna K" class="w-48 h-48 object-cover rounded-full transition-opacity duration-300 group-hover:opacity-75">
+            <img src="swapna.jpg" alt="Swapna K"
+              class="w-48 h-48 object-cover rounded-full transition-opacity duration-300 group-hover:opacity-75">
           </div>
           <div class="mt-6">
             <h3 class="text-lg font-medium text-gray-900">
               Swapna K
-              <span class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+              <span
+                class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
                 Frontend Lead
               </span>
             </h3>
@@ -263,13 +335,15 @@
               <a href="#" class="text-gray-400 hover:text-gray-500">
                 <span class="sr-only">LinkedIn</span>
                 <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
               </a>
               <a href="#" class="text-gray-400 hover:text-gray-500">
                 <span class="sr-only">GitHub</span>
                 <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                  <path fill-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
                 </svg>
               </a>
             </div>
@@ -282,14 +356,14 @@
   <script>
     // Add click handlers to example queries
     document.querySelectorAll('.group').forEach(query => {
-      query.addEventListener('click', function() {
+      query.addEventListener('click', function () {
         const queryText = this.querySelector('p').textContent;
         document.getElementById('queryInput').value = queryText;
       });
     });
 
     // Animate elements on page load
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const elements = document.querySelectorAll('.animate-slide-up');
       elements.forEach((el, index) => {
         el.style.animationDelay = `${index * 0.1}s`;
@@ -297,31 +371,32 @@
     });
 
     async function submitQuery() {
-        const query = document.getElementById('queryInput').value;
-        const responseText = document.getElementById('responseText');
-        // Unhide the response container if hidden
-        document.getElementById('responseContainer').classList.remove('hidden');
-        responseText.innerHTML = 'Processing query...';
-        
-        try {
-            const response = await fetch('/query_new', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ query: query })
-            });
-            const data = await response.json();
-            responseText.innerHTML = data.response;
-        } catch (error) {
-            responseText.innerHTML = "Error: " + error.message;
-        }
+      const query = document.getElementById('queryInput').value;
+      const responseText = document.getElementById('responseText');
+      // Unhide the response container if hidden
+      document.getElementById('responseContainer').classList.remove('hidden');
+      responseText.innerHTML = 'Processing query...';
+
+      try {
+        const response = await fetch('/query_new', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ query: query })
+        });
+        const data = await response.json();
+        responseText.innerHTML = data.response;
+      } catch (error) {
+        responseText.innerHTML = "Error: " + error.message;
+      }
     }
-    
-    document.getElementById('queryForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        submitQuery();
+
+    document.getElementById('queryForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      submitQuery();
     });
   </script>
 </body>
+
 </html>
