@@ -1,26 +1,27 @@
 # The following versions are strictly used in this project.
 # If you experience dependency conflicts (e.g. with conda-repo-cli, langchain-ollama, ollama, etc.),
 # please use a dedicated virtual environment and uninstall the conflicting packages.
-torch>=2.0.0
-huggingface-hub>=0.19.4
-transformers>=4.30.0
-sentence-transformers>=2.2.0
-fastapi>=0.68.0
-uvicorn>=0.15.0
-pypdf==3.17.1
-PyPDF2==3.0.1
+torch>=2.1.0
+huggingface-hub>=0.20.2
+transformers>=4.35.0
+sentence-transformers>=2.2.2
+fastapi>=0.103.0
+uvicorn>=0.23.2
+pypdf>=3.20.0
+PyPDF2>=3.0.1
 jinja2==3.1.2
-qdrant-client>=1.1.1
-ctransformers
+qdrant-client>=1.3.0
+ctransformers>=0.2.24
 python-multipart>=0.0.5
-aiofiles==23.2.1
-urllib3==1.26.18
-protobuf==4.25.3
-pydantic==1.10.9
-tqdm==4.66.1
-requests==2.31.0
-numpy
-langchain-core>=0.1.0
-langchain-community>=0.0.10
+aiofiles>=23.2.1
+urllib3>=2.0.5
+protobuf>=4.25.3
+pydantic>=2.9.0
+tqdm>=4.66.1
+requests>=2.31.0
+numpy>=1.23.5
+scipy>=1.11.2
+scikit-learn>=1.3.2
+langchain-core>=0.4.0
+langchain-community>=0.3.23
 wget>=3.2
-huggingface-hub>=0.19.0

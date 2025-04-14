@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "rag.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "rag.py"
+    }
+  ],
+  "env": {
+    "QDRANT_URL": "your-qdrant-cloud-url",
+    "QDRANT_API_KEY": "your-api-key"
+  }
+}
