@@ -18,7 +18,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Create necessary directories
-RUN mkdir -p /app/models /app/Data
+RUN mkdir -p /app/model /app/Data
 
 # Run with uvicorn
 CMD ["uvicorn", "rag:app", "--host", "0.0.0.0", "--port", "8000"]

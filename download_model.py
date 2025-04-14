@@ -7,10 +7,10 @@ def download_file(url, filename):
     response = requests.get(url, stream=True)
     total_size = int(response.headers.get('content-length', 0))
     
-    # Ensure models directory exists
-    os.makedirs('models', exist_ok=True)
+    # Ensure model directory exists
+    os.makedirs('model', exist_ok=True)
     
-    path = os.path.join('models', filename)
+    path = os.path.join('model', filename)
     
     print(f"Downloading {filename}...")
     print(f"File size: {total_size / (1024*1024*1024):.2f} GB")

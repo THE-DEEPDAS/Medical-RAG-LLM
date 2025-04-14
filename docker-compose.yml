@@ -14,10 +14,10 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./models:/app/models
+      - ./model:/app/model
       - ./Data:/app/Data
     environment:
-      - MODEL_PATH=/app/models/mistral-7b-instruct-v0.1.Q4_K_M.gguf
+      - MODEL_PATH=/app/model/mistral-7b-instruct-v0.1.Q4_K_M.gguf
       - QDRANT_HOST=qdrant
       - QDRANT_PORT=6333
     depends_on:

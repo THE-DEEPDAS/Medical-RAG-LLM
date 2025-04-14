@@ -47,7 +47,7 @@ If any information is missing, use your knowledge to fill in the gaps.
 Response:
 """
 
-MODEL_PATH = "F:/Wearables/Medical-RAG-LLM/models/mistral-7b-instruct-v0.1.Q4_K_M.gguf"
+MODEL_PATH = "F:/Wearables/Medical-RAG-LLM/model/mistral-7b-instruct-v0.1.Q4_K_M.gguf"
 
 # Initialize components
 try:

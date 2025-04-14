@@ -10,6 +10,7 @@ medrag_env
 
 # Distribution / packaging
 .Python
+model
 build/
 develop-eggs/
 dist/

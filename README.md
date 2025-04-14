@@ -1,6 +1,6 @@
 # Medical Assistant Bot
 
-A comprehensive medical assistant bot that integrates Retrieval-Augmented Generation (RAG) for real-time analysis using locally deployed Large Language Models (LLMs). The system provides detailed information about medicines, including their purpose, side effects, drug composition, key ingredients, age group, dosage, and timing.
+A comprehensive medical assistant bot that integrates Retrieval-Augmented Generation (RAG) for real-time analysis using locally deployed Large Language model (LLMs). The system provides detailed information about medicines, including their purpose, side effects, drug composition, key ingredients, age group, dosage, and timing.
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ A comprehensive medical assistant bot that integrates Retrieval-Augmented Genera
 
 ## Overview
 
-The Medical Assistant Bot leverages advanced AI models to provide detailed responses to user queries related to medicines. It uses a combination of local LLMs and vector databases to retrieve and generate accurate information. The system is designed to ensure reliability by incorporating uncertainty indicators to evaluate the confidence of the responses.
+The Medical Assistant Bot leverages advanced AI model to provide detailed responses to user queries related to medicines. It uses a combination of local LLMs and vector databases to retrieve and generate accurate information. The system is designed to ensure reliability by incorporating uncertainty indicators to evaluate the confidence of the responses.
 
 ## System Architecture
 
@@ -128,7 +128,7 @@ pip install -r requirements.txt
    ```
 
 3. **Download the model**:
-   Ensure the model file is located at `F:/Wearables/Medical-RAG-LLM/models/mistral-7b-instruct-v0.1.Q4_K_M.gguf`.
+   Ensure the model file is located at `F:/Wearables/Medical-RAG-LLM/model/mistral-7b-instruct-v0.1.Q4_K_M.gguf`.
 
 4. **Prepare the data**:
    Place your medical PDFs in the `F:/Wearables/Medical-RAG-LLM/Data` folder.

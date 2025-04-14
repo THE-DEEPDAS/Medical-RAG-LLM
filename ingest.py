@@ -33,7 +33,7 @@ def ingest_docs():
         )
         
         # Initialize Qdrant client with increased timeout
-        from qdrant_client.http.models import VectorParams
+        from qdrant_client.http.model import VectorParams
         client = QdrantClient("http://localhost:6333", timeout=60)
         
         # Check if collection exists and recreate only if needed

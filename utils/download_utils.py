@@ -22,7 +22,7 @@ def download_model(url: str, output_path: str, force: bool = False) -> Optional[
 
 def ensure_model_exists():
     """Ensure the required model file exists"""
-    model_path = "models/mistral-7b-instruct-v0.1.Q4_K_M.gguf"
+    model_path = "model/mistral-7b-instruct-v0.1.Q4_K_M.gguf"
     model_url = "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q4_K_M.gguf"
     
     return download_model(model_url, model_path)

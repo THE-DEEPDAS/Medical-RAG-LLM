@@ -34,11 +34,11 @@ def check_requirements():
             logger.error(f"No PDF files found in {DATA_DIR}. Please add some medical PDFs.")
             return False
 
-        # Check if models directory exists
-        models_dir = os.path.join(ROOT_DIR, 'models')
-        if not os.path.exists(models_dir):
-            logger.info("Creating 'models' directory...")
-            os.makedirs(models_dir)
+        # Check if model directory exists
+        model_dir = os.path.join(ROOT_DIR, 'model')
+        if not os.path.exists(model_dir):
+            logger.info("Creating 'model' directory...")
+            os.makedirs(model_dir)
 
         # Check if ingest.py exists
         if not os.path.exists(os.path.join(ROOT_DIR, 'ingest.py')):
