@@ -1,0 +1,33 @@
+Please create a detailed medical information document for the following common medicines: Paracetamol, Amoxicillin, Omeprazole, Metformin, and Aspirin. For each medicine, provide information in the following structured format:
+
+1. Medicine Name:
+   Purpose: [Main therapeutic uses]
+   Side effects: [List common side effects]
+   Drug composition: [Active ingredient and strength]
+   Key ingredients: [List all active ingredients]
+   Age group: [Specify suitable age ranges]
+   Dosage: [Standard dosing instructions]
+   Timing: [When to take, frequency, relation to meals]
+
+Please ensure:
+- Information is evidence-based and medically accurate
+- Side effects are listed in order of frequency
+- Dosage information includes both adult and pediatric doses where applicable
+- Clear instructions about timing (before/after meals, intervals between doses)
+- Language is clear and accessible
+- Format is consistent across all medicines
+- Each section is clearly separated with line breaks
+
+Example format for ONE medicine:
+=================================
+Medicine: Paracetamol
+Purpose: Pain relief and fever reduction
+Side effects: Nausea, skin rash, liver damage (rare)
+Drug composition: Paracetamol 500mg/tablet
+Key ingredients: N-acetyl-p-aminophenol (Paracetamol)
+Age group: Adults and children over 6 years
+Dosage: Adults: 1-2 tablets (500-1000mg) every 4-6 hours, maximum 4g per day
+Timing: Can be taken with or without food, maintain 4-hour gaps between doses
+=================================
+
+Please provide similar detailed information for all five medicines, maintaining this exact format and level of detail.

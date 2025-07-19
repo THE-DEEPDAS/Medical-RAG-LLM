@@ -258,8 +258,10 @@
             </svg>
           </div>
           <div class="flex-1">
-            <h3 class="font-semibold text-gray-900 mb-2">Response</h3>
-            <div id="responseText" class="text-gray-700"></div>
+            <h3 class="font-semibold text-gray-900 mb-4">Medicine Information</h3>
+            <div id="responseText" class="text-gray-700 space-y-6">
+              <!-- Response sections will be inserted here -->
+            </div>
           </div>
         </div>
       </div>
@@ -373,9 +375,8 @@
     async function submitQuery() {
       const query = document.getElementById('queryInput').value;
       const responseText = document.getElementById('responseText');
-      // Unhide the response container if hidden
       document.getElementById('responseContainer').classList.remove('hidden');
-      responseText.innerHTML = 'Processing query...';
+      responseText.innerHTML = '<div class="text-center"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500 mx-auto"></div><p class="mt-2">Processing query...</p></div>';
 
       try {
         const response = await fetch('/query_new', {
@@ -386,10 +387,49 @@
           body: JSON.stringify({ query: query })
         });
         const data = await response.json();
-        responseText.innerHTML = data.response;
+
+        // Parse the response and format it into sections
+        const sections = formatResponse(data.response);
+        responseText.innerHTML = sections;
+
       } catch (error) {
-        responseText.innerHTML = "Error: " + error.message;
+        responseText.innerHTML = `<div class="text-red-500">Error: ${error.message}</div>`;
       }
+    }
+
+    function formatResponse(response) {
+      const sections = {
+        'Investment Type': '💼',
+        'Risk Level': '⚠️',
+        'Expected Returns': '📈',
+        'Time Horizon': '⏳',
+        'Key Benefits': '✅',
+        'Potential Drawbacks': '❌',
+        'Eligibility': '👥'
+      };
+
+      const lines = response.split('\n');
+      let formattedHtml = '';
+      let currentSection = '';
+
+      for (const line of lines) {
+        for (const [section, icon] of Object.entries(sections)) {
+          if (line.includes(section)) {
+            currentSection = line.replace(`${section}:`, '').trim();
+            formattedHtml += `
+              <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-4 transition-all hover:from-indigo-100 hover:to-purple-100">
+                <div class="flex items-center space-x-2 mb-2">
+                  <span class="text-xl">${icon}</span>
+                  <h4 class="font-semibold text-indigo-900">${section}</h4>
+                </div>
+                <p class="text-gray-700 ml-8">${currentSection}</p>
+              </div>`;
+            break;
+          }
+        }
+      }
+
+      return formattedHtml || response;
     }
 
     document.getElementById('queryForm').addEventListener('submit', async function (e) {
